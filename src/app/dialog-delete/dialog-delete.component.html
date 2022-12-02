@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>
+    <div class="flex">
+        <div class="flex1">
+            Delete Project
+        </div>
+        <div class="flex2">
+            <mat-icon mat-dialog-close>clear</mat-icon>
+        </div>
+    </div>
+    <hr>
+
+</h1>
+
+<div mat-dialog-content>
+    Are You Sure Wanted to Delete This Project ?
+    <div mat-dialog-actions [align]="'end'">
+        <button mat-raised-button color="warn" mat-dialog-close>No</button>
+        <button mat-raised-button color="primary" (click)="deleteProject(this.deleteData)">Yes</button>
+    </div>
+</div>

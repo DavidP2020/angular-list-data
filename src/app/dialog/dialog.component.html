@@ -1,21 +1,33 @@
-<h1 mat-dialog-title> Add New Projects
+<h1 mat-dialog-title>
+    <div class="flex">
+        <div class="flex1">
+            {{formName}} New Projects
+        </div>
+        <div class="flex2">
+            <mat-icon mat-dialog-close>clear</mat-icon>
+        </div>
+    </div>
     <hr>
+
 </h1>
 
 <div mat-dialog-content>
-    <mat-form-field appearance="outline">
-        <mat-label>Input</mat-label>
-        <input matInput>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
+    <form [formGroup]="projectForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Project Name</mat-label>
+            <mat-hint>Project ABCD</mat-hint>
+            <input formControlName="projectName" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input formControlName="date" matInput [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </form>
 </div>
 <div mat-dialog-actions [align]="'end'">
     <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="primary" (click)="addProject()">{{actionBtn}}</button>
 </div>
