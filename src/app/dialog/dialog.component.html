@@ -25,6 +25,28 @@
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
+        <br /><br />
+        <mat-label>Task</mat-label>
+        <div formArrayName="task">
+            <div *ngFor="let task of formControl.controls; let i = index">
+                <div class="flex">
+                    <div class="flex1">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Task</mat-label>
+                            <input [formControlName]="i" matInput>
+                        </mat-form-field>
+                    </div>
+                    <div class="flex2">
+                        <button style="margin-top: 0.4rem;" (click)="onRemoveForm(i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button mat-raised-button (click)="onAddForm()">
+                <mat-icon>add</mat-icon>Add New Task
+            </button>
+        </div>
     </form>
 </div>
 <div mat-dialog-actions [align]="'end'">
